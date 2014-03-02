@@ -1,0 +1,17 @@
+---
+- hosts: databases
+  gather_facts: false
+  sudo: true
+  sudo_user: postgres
+  roles:
+    - database/deploy
+
+- hosts: webservers
+  remote_user: "{{ project_user }}"
+  roles:
+    - webapp/deploy
+
+- hosts: webservers
+  sudo: true
+  roles:
+    - server/deploy

@@ -1,0 +1,25 @@
+from common import *
+
+DEBUG = False
+TEMPLATE_DEBUG = False
+ALLOWED_HOSTS = ['{{ inventory_hostname }}']
+
+SECRET_KEY = '{{ secret_key }}'
+DATABASES["default"]["NAME"] = '{{ database_name }}'
+DATABASES["default"]["USER"] = '{{ project_user }}'
+DATABASES["default"]["PASSWORD"] = '{{ database_password }}'
+
+STATIC_ROOT = '{{ static_root }}'
+MEDIA_ROOT = '{{ media_root }}'
+
+ADMINS = (
+    ('Wei Yen', 'yen223@gmail.com'),
+)
+SERVER_EMAIL = 'server@weiyen.me'
+EMAIL_HOST = '{{ email_host }}'
+EMAIL_PORT = {{ email_port }}
+EMAIL_HOST_USER = '{{ email_host_user }}'
+EMAIL_HOST_PASSWORD = '{{ email_host_password }}'
+EMAIL_USE_TLS = {{ email_use_tls }}
+DEFAULT_FROM_EMAIL = '{{ default_from_email }}'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

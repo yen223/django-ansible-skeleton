@@ -1,0 +1,14 @@
+---
+  - name: Create the project database.
+    postgresql_db: name={{ database_name }}
+
+  - name: Create a user for the application
+    postgresql_user: name={{ project_user }}
+                     password={{ database_password }}
+                     db={{ database_name }}
+                     priv=ALL
+
+  - name: Restrict the permissions of the database user.
+    postgresql_user: name={{ project_user }}
+                     password={{ database_password }}
+                     role_attr_flags=NOSUPERUSER,NOCREATEDB

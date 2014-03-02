@@ -1,0 +1,47 @@
+---
+  - name: Create the project directory.
+    file: path={{project_root}}
+          state=directory
+
+  - name: Pull sources from the repository.
+    git: repo={{project_repo}}
+         dest={{project_root}}
+         version={{branch}}
+
+  - name: Upgrade the virtualenv.
+    pip: requirements={{project_root}}requirements.txt
+         virtualenv={{project_root}}
+         virtualenv_site_packages=no
+
+  - name: Install the production settings file.
+    template: src=production-settings.py.j2
+              dest={{ project_root }}{{ project_name }}/settings/production.py
+
+  - name: Collect static files
+    django_manage: command=collectstatic
+                   app_path={{project_root}}
+                   virtualenv={{project_root}}
+    environment: env
+
+  - name: Initialize database
+    django_manage: command=syncdb
+                   app_path={{project_root}}
+                   virtualenv={{project_root}}
+    environment: env
+
+  - name: Migrate database
+    django_manage: command=migrate
+                   app_path={{project_root}}
+                   virtualenv={{project_root}}
+    environment: env
+
+  - name: Transfer fixture file
+    copy: src=initial.json
+          dest={{ initial_data }}
+
+  - name: Migrate initial data
+    django_manage: command=loaddata
+                   fixtures={{ initial_data }}
+                   app_path={{project_root}}
+                   virtualenv={{project_root}}
+    environment: env

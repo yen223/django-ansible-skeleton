@@ -1,0 +1,31 @@
+---
+# Project settings
+project_name: zipcode
+# project_host: zipcode.weiyen.me
+project_repo: git@github.com:yen223/zipcode-malaysia.git
+project_user: "{{project_name}}"
+branch: master
+
+
+# File paths
+project_root: /home/{{project_name}}/projects/{{project_name}}/
+static_root: /var/www/{{project_name}}/static/
+media_root:  /var/www/{{project_name}}/media/
+log_root: /var/www/{{project_name}}/logs/
+
+# Database settings
+database_name: "{{project_name}}_db"
+
+# Django settings
+initial_data: "{{project_root}}initial.json"
+
+# Server settings
+proxy_pass: 127.0.0.1:7777
+
+# Email settings
+email_host: 'smtp.gmail.com'
+email_port: 587
+email_host_user: 'server@weiyen.me'
+email_host_password: '&ZW&m9<Q'
+email_use_tls: 'True'
+default_from_email: 'server@weiyen.me'

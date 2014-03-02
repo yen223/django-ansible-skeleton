@@ -1,0 +1,23 @@
+---
+  - name: Add nginx PPA
+    action: apt_repository repo=ppa:nginx/stable state=present
+
+  - name: Install required system packages.
+    apt: pkg={{item}} state=latest update-cache=yes
+    with_items: system_packages
+
+  - name: Create static root folder
+    file: path={{static_root}}
+          owner={{project_user}}
+          group=www-data
+          mode=774
+          state=directory
+    sudo: true
+
+  - name: Create media root folder
+    file: path={{media_root}}
+          owner={{project_user}}
+          group=www-data
+          mode=774
+          state=directory
+    sudo: true

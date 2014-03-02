@@ -1,0 +1,14 @@
+---
+  - name: Install required system packages.
+    apt: pkg={{item}} state=latest update-cache=yes
+    with_items: system_packages
+    sudo: true
+
+  - name: Install pip
+    action: easy_install name=pip
+    sudo: true
+
+  - name: Install required Python packages.
+    pip: name={{ item }}
+    with_items: python_packages
+    sudo: true
