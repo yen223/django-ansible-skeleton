@@ -1,0 +1,12 @@
+---
+system_packages:
+        - build-essential
+        - libpq-dev
+        - postgresql
+        - postgresql-contrib
+        - python-dev
+        - python-setuptools
+        - libpq-dev
+
+python_packages:
+        - psycopg2

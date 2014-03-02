@@ -1,0 +1,13 @@
+system_packages:
+        - build-essential
+        - libpq-dev
+        - libxml2-dev
+        - libjpeg-dev
+        - libfreetype6-dev
+        - libevent-dev
+        - zlib1g-dev
+        - rabbitmq-server
+        - git
+        - memcached
+        - libmemcached-dev
+        - nginx

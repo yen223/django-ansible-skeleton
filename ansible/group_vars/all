@@ -1,0 +1,25 @@
+---
+# Project settings
+project_name: zipcode
+# project_host: zipcode.weiyen.me
+project_repo: git@github.com:yen223/zipcode-malaysia.git
+project_user: "{{project_name}}"
+branch: master
+secret_key: "{{ lookup('password', '/tmp/secret_key chars=ascii,numbers,digits,hexdigits,punctuation length=50') }}"
+
+
+# File paths
+project_root: /home/{{project_name}}/projects/{{project_name}}/
+static_root: /var/www/{{project_name}}/static/
+media_root:  /var/www/{{project_name}}/media/
+log_root: /var/www/{{project_name}}/logs/
+
+# Database settings
+database_name: "{{project_name}}_db"
+database_password: "{{ lookup('password', '/tmp/db_password chars=ascii,numbers,digits,hexdigits,punctuation') }}"
+
+# Django settings
+initial_data: "{{project_root}}initial.json"
+
+# Server settings
+proxy_pass: 127.0.0.1:7777

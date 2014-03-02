@@ -1,0 +1,13 @@
+from common import *
+
+DEBUG = False
+TEMPLATE_DEBUG = False
+ALLOWED_HOSTS = ['{{ inventory_hostname }}']
+
+SECRET_KEY = '{{ secret_key }}'
+DATABASES["default"]["NAME"] = '{{ database_name }}'
+DATABASES["default"]["USER"] = '{{ project_user }}'
+DATABASES["default"]["PASSWORD"] = '{{ database_password }}'
+
+STATIC_ROOT = '{{ static_root }}'
+MEDIA_ROOT = '{{ media_root }}'
