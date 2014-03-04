@@ -14,26 +14,26 @@
          virtualenv_site_packages=no
 
   - name: Install the production settings file.
-    template: src=production-settings.py.j2
-              dest={{ project_root }}{{ project_name }}/settings/production.py
+    template: src=settings.__init__.py.j2
+              dest={{ project_root }}{{ project_name }}/settings/__init__.py
 
   - name: Collect static files
     django_manage: command=collectstatic
                    app_path={{project_root}}
                    virtualenv={{project_root}}
-    environment: env
+    # environment: env
 
   - name: Initialize database
     django_manage: command=syncdb
                    app_path={{project_root}}
                    virtualenv={{project_root}}
-    environment: env
+    # environment: env
 
   - name: Migrate database
     django_manage: command=migrate
                    app_path={{project_root}}
                    virtualenv={{project_root}}
-    environment: env
+    # environment: env
 
   - name: Transfer fixture file
     copy: src=initial.json
@@ -44,4 +44,4 @@
                    fixtures={{ initial_data }}
                    app_path={{project_root}}
                    virtualenv={{project_root}}
-    environment: env
+    # environment: env

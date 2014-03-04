@@ -12,6 +12,10 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 
+    location /robots.txt {
+        alias {{ static_root }}robots.txt;
+    }
+
     location /static/ {
         alias {{ static_root }};
         expires 30d;
