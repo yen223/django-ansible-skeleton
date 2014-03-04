@@ -26,6 +26,5 @@ proxy_pass: 127.0.0.1:7777
 email_host: 'smtp.gmail.com'
 email_port: 587
 email_host_user: 'server@weiyen.me'
-email_host_password: '&ZW&m9<Q'
 email_use_tls: 'True'
 default_from_email: 'server@weiyen.me'
